@@ -11,4 +11,8 @@ after_success:
 before_deploy:
   - ./gradlew jacocoTestCoverageVerification
 deploy:
-  - echo 'WIP'
+  provider: script
+  script: echo 'WIP'
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^master$
