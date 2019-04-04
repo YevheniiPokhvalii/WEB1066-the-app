@@ -21,4 +21,8 @@ script:
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 deploy:
-- docker login --password "${DOCKER_PASSWORD}" --username "${DOCKER_LOGIN}";
+  provider: script
+  script:
+    - docker login --password "${DOCKER_PASSWORD}" --username "${DOCKER_LOGIN}";
+  on:
+    all_branches: true
