@@ -23,6 +23,8 @@ after_success:
 deploy:
   provider: script
   script:
+    - echo $DOCKER_PASSWORD|wc -c
+    - echo $DOCKER_LOGIN|wc -c
     - docker login --password "${DOCKER_PASSWORD}" --username "${DOCKER_LOGIN}";
   on:
     all_branches: true
