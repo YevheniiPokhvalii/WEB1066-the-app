@@ -13,7 +13,7 @@ env:
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_LOGIN=wenlock
-  - secure: keg2l1qpjw+JAM7KPsg5Iqo3zjgAtmILtwoXq2i91eg3wSDCbdq3Q6lqBojWmB4QXHfyrHO8lX+v718H+uuqrS3xA3Kpysz/+jJShh1PPjZYe2LosQzEtRlMbwW8Hf/CffJ9IqalCRf6wT3BJArEWnHyg4Xqbcoh6yteKjaeQRlFVSNXL2cM94t52vnGfHFoiHgzOwwSV/4efHZEh2cgB7XXzLD9ifXndU1Gi7u+5OQ6qB0UB/ZXs5eUhuYBowVBNMTCny9z4HSnihcgVaL08ixK60BtBcfYp320kfTSDAIb7cvDMdLI/P7ZFZfGTsVF2HH7Km8JGHqxIZnT6J9AspMsvZICUjRiE/5k2Q+gE87bNKp2Mxk5dis6quK7LDDSTM+uxoMBfOJqfZ4idVi2PMNDfP3sE0XAS21/WoSYP/+k8xIhdAqySmwjZziAt5pPbwhaDHpxpE1oBM8G1DBEfzAnqtMUdG7ukwC+FrNv0tQMYprz0m9aTAHF+ix3oOg2rfvuYLcr65Wg2+yQbB4V8C/pMJB+mmphztLrQU0J0d7xLanX7N3k7T1qQINhWB2tH3OFmPqKZwWOIA5nErLgGGPFVHePFEFsSa6nhh8inQJgdngecrnRCy3/5ty4JDHW8PlCTZN2oqCwHha8nhnfu4QyZXhup/QOlSaFpAq3iPA=
+  - secure: FPECfjPaeyL1h7YkrgmEB3pg0hjdd+11BxCMtu3t6ITLpyawdCp9PWBmV7aswpgGiL7uxsRLfYmmgJJKJIac1IKWbu8SPsDH+efy4CerCCKoKRors5eMuc3d2+jKsFtF93DVjrKCWzNPPDWxLFT96Kliio6uXX3OQCYGqBp/bWyA1xbqBijURR49EvdlqMye1xH3KW2U+kE5s8YZerfcxRWFjtaEIzrtgo+ShbRkaaUHfjTGHcw+tJgL0chruocetS8aDN4Q6VJD6E2Mq7+kZlqykjbhQeqS7yECFC9qwP8JLwU1NCzACVvxRQoJP6TrOckOSPNH4HSt0R9zrcm2izlUU92RpKkMhqi9/vj/PB2QuxLDGssWoH2J+ixFz+jUEJ6jf/tNKyzPj9Jta8ZQjtr2K6LEY8/8LMr8EpB/g4+ogJ3kj8Lm5vBGjU2nVOJCYfG/aaNCz+Ah1C/SMgWRVhgm9nE5dr2mnwIIULVNxJP+uFbEQ4S88/hisu+imR9k33z/hhhXrBFBmwGeZEQs0sFTpW4J9Z9iYm0QyjvYw82NLN8YYbXacyhilXkypxFHdgwzw/nJ/Zl5WohmR6Zz1bU/SRhQoAOq18WIxFTfWZ1XaSjq3WdqGWe1lZ+xeB/+DUqX6ShBb30FUpfC5c6hk8pH5kt/WIHO20uCSQcBPCg=
 install:
 - "./gradlew clean jar"
 script:
@@ -27,9 +27,9 @@ before_deploy:
 deploy:
   provider: script
   script: >-
-      echo "${DOCKER_PASSWORD}" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin &&
-      docker tag zutherb/monolithic-shop:latest $DOCKER_LOGIN/monolithic-shop:latest &&
-      docker push $DOCKER_LOGIN/monolithic-shop:latest
+    echo "${DOCKER_PASSWORD}" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin
+    && docker tag zutherb/monolithic-shop:latest $DOCKER_LOGIN/monolithic-shop:latest
+    && docker push $DOCKER_LOGIN/monolithic-shop:latest
   on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
     all_branches: true
