@@ -2,6 +2,8 @@ language: java
 jdk:
 - oraclejdk8
 - oraclejdk9
+services:
+  - docker
 env:
   matrix:
   - COVERAGE=0.05 BUILD_TARGET=./monolithic/ui
