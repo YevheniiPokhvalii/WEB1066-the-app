@@ -13,12 +13,12 @@ env:
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_USERNAME=test
-  - secure: I5DaPyrIDL2/RuhwBM62m+tKM8dCyFDy921Y0mBg+8SIDvbPOz6YAwM5K5a+Lmba0GN9VCMeaXwNEp069lxFWwOu/ckTZBKxVMn8u+TJrk61qdPa2fGHPpKRFFL6wxZaPBTFcd1ph0q0huB3TxTtemWFHu26agj9pbHZQO7snipflmzDib+5v/Hyp2I4u9yJ9LmvQIDxC2GHhzTHmUQiK8tjwuNQc8npSkXoDXmOgL8B8KMTTm5Uc2eL1vrDIudFdqoxQFyR3AINiYeMDWBeo4pKts28b6wjxLclhwH+pKVjC/ylBi0zWzEMP9mHid3ujv9gTsCCMcUzb8+q5Q/ddQzPn1/iCC+KqaFRTKHXrQMDNuvRLXFIiVAXHociRY/tfNAXnWPJzNmE3qjFDfFAKdgJqddEgVkoUpfUXFo8B6ZfndF2OXVZ44rthC1ImvqZYzEhbLatSqam1agmCfCPDWUm6o8CDLdiuAaWJrLfA8279h2SMORlF4HwrvcMn7CNRIxTRJh6f4WHCkSds8jYIPIx6u042aook8tWBn8I1KLn80FzgSgz3MFVdoMRfQysYQRoUsjbfhLQEnw24ieyCjRIAWMlksDijLcSj5DHpzJ8uhntx43sbyOp9GpeeGfUwJsfJaN2PNzdtpPfKFOmARuuUOuF0XsfUjC+hx9NlPc=
-  - secure: jltzmQqeaI2fUaC83k0qMmyv9Vqk6icY5TW3Mkic3v0mf5xT/qJudHTp3E0lTIRT6T8Z4t8OR8w5HsfT7dGHiyrCVY5WV05bfC3X6OJuhFGcFs+HzBqYjMC3GgIDcJ08HlFQ09NXWNfWICFlHl2UHVM09idnfBRfXcZiWON+SdX9AnxbyVTnfneaVqXG6CLmtBApmtncHDtbHtBql63LQmnu7cbxQ7ZRQQC4KOath7duv4QhLDz3enJfF9yReH6t3Ix2r14kaOkgg4Hph+soDSjXb4eact9gZk+8tKgsC2CVizwkp8vcA1KZnzxCv3YbAcOaCdhnafUtnJQsufHkw3o1Xgi9uXz7yhag884iYhGGwkv7VQnNuPW6SH4GixK80SL41b+PTxANGJF7ev3dLvDW4J8CtCrLgRItqh39YgfGOqjWXjRzFEtvcB7iznd0GvaFajNjR/TBU1Sd+lUEtmc+koRUM2MtP/0M0/FhNfBbGI6vCfDWIeDunz3YMEbbAjmaKJUSjFLTCwfdwHj1KZEO+OMfrtZBdcZMx4+7yKBXjtl1NGOzJXEazORe2JdPBDyADaXp4qo7F4oeMixJu1IvXjYrHAeExzVva2CDfc9syaNngWNurW+Z0RHEBtL0N9CqecqQX58ySHygZt5yQIOUjq2Q2WkpWx+lL1a5ce4=
+  - secure: B9RhCPYKTp3GB5zsMpRSL/YRqz1Jc41bZeSbsUciVDUeZ9Wuef+YV3/nw+VqD3X7Q9nNbEuTkcd6fKDRM5sPKs/cTyLye5uY/9ZeIyDc++DtfzyvfnrJW04fY1ZfA/qLoCE0dh3xVZKWaXvruUIc7qdqDi5FNB/RRFtLiiK0AdONApx4c90ZNXOSZB0t6IlV1G3dMB9a8aoTQRsLOJ3sfMr3AgtGnBqsAgb1e6UzxfE5expoTPSl3d7RiMt3yuQEn5xElH+wYnzp/Vm/aEnTTxeqQMCIZQA6c+zs7356wyP7EFequ9ksPIUQQ3Vrheo3uEy1ebZYx/JkmgR198E248z4flvlJnwgAJQTPOu1fI0VFWI607E00lssbnUpaZ1JCo1PZEkw9/LvQ39btCnAr8crJ+GBcGgv/3O9TnGCv3zpK7CTGj9tHbsrSWmB4dZI27lfhhsdza8rjej7hvogIiRij1TQ6o2M8F1NEzOSzTb5Qr7+iVVX8SPfmOzImXSaye4BoYrYJeTRfOCaZeX12lXtan04Wh1nG/oLSeILp1arxwh/ziOaSvxAxfAh6PwVgyfWg1dT7GzoTUy5rWvF/G7R6GbaMANga/Yy/2HnQjjDicWNo4yxDnqUpU7Zv1Cxyc41/NnKfQFtSfieRrWW3hI8XI8tkMIuYVeJmLdtlpY=
+  - secure: QLLDeI+Syaq0MvSyWQbo/KL39Uq+d/DYtfmzJJFagFkm+CaUrVbLoShsswUWUAeSD9ZaX0wkK6n02FX9vHEozLuSZzTM5OTzyZq9bBQXL0tHGvfVOZK4F+Li8TuLglDoYz5AtVvILZUlkQAYDJ60+wV0VkJoWTxnqJSMupjZkZ0sFu2GrvXdMmNAvWAkCpxXJdQWDZ40TRVW3noYdyLl9SD+DDVYsS0OWT8KHxi+m0MWJehXLuaTa84H2GGALA1GPWkvIg0YKc9AgUyacqCTI9XuqVORaEIZaOqx2+vIrsAEBZK5WjRPMCuIviyEjCVS8p55YToV8dxBCXGn7T8PyXmsh1jTeQK+xaWQxoRAdypRrd4VSupphL/KvIxh8VN9vYT4QMvaWz54OrxHBfV7hiPclPTpEPz9hFUWtkdpsGPUDEVYkRcpl3tsQyJoEhujPRihLUYroHGwa7l7dAiyqwXIANzVtmSX6TvX1ELouYsy0pmi2Mw/xH6tLGIiE8pwp/vj2f/Y5+V43pc2ZjsbfpdFM6D3a9hzqiaWIbpChZe5vnZS+njW8/4Egf5SxdtmGyLXmUKDxpFkyb2aDRMaZUsSAf1CEORcCQ8bzoXUPR7FskDzlF/uM92MKd4rIMX1E2hR22ACg8frvAZi8YnKzfM5YWFrlwvLRRit44zKD68=
 install:
-- ./gradlew clean jar
+- "./gradlew clean jar"
 script:
-- ./gradlew -p $BUILD_TARGET check
+- "./gradlew -p $BUILD_TARGET check"
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 - bash -c "echo $DOCKER_PASSWORD|wc -c"
@@ -26,6 +26,8 @@ after_success:
 - echo $TRAVIS_BUILD_ID
 deploy:
   provider: script
-  script: bash -c "echo $TRAVIS_BUILD_ID;echo \"testing global -> $DOCKER_USERNAME\";echo $DOCKER_PASSWORD|wc -c;echo $DOCKER_LOGIN|wc -c; docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\";"
+  script: bash -c "echo $TRAVIS_BUILD_ID;echo \"testing global -> $DOCKER_USERNAME\";echo
+    $DOCKER_PASSWORD|wc -c;echo $DOCKER_LOGIN|wc -c; docker login --password \"${DOCKER_PASSWORD}\"
+    --username \"${DOCKER_LOGIN}\";"
   on:
     all_branches: true
