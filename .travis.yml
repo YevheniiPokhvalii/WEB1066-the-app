@@ -12,7 +12,7 @@ env:
   - COVERAGE=0.12 BUILD_TARGET=./monolithic/repository/product
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
-  - secure: B9RhCPYKTp3GB5zsMpRSL/YRqz1Jc41bZeSbsUciVDUeZ9Wuef+YV3/nw+VqD3X7Q9nNbEuTkcd6fKDRM5sPKs/cTyLye5uY/9ZeIyDc++DtfzyvfnrJW04fY1ZfA/qLoCE0dh3xVZKWaXvruUIc7qdqDi5FNB/RRFtLiiK0AdONApx4c90ZNXOSZB0t6IlV1G3dMB9a8aoTQRsLOJ3sfMr3AgtGnBqsAgb1e6UzxfE5expoTPSl3d7RiMt3yuQEn5xElH+wYnzp/Vm/aEnTTxeqQMCIZQA6c+zs7356wyP7EFequ9ksPIUQQ3Vrheo3uEy1ebZYx/JkmgR198E248z4flvlJnwgAJQTPOu1fI0VFWI607E00lssbnUpaZ1JCo1PZEkw9/LvQ39btCnAr8crJ+GBcGgv/3O9TnGCv3zpK7CTGj9tHbsrSWmB4dZI27lfhhsdza8rjej7hvogIiRij1TQ6o2M8F1NEzOSzTb5Qr7+iVVX8SPfmOzImXSaye4BoYrYJeTRfOCaZeX12lXtan04Wh1nG/oLSeILp1arxwh/ziOaSvxAxfAh6PwVgyfWg1dT7GzoTUy5rWvF/G7R6GbaMANga/Yy/2HnQjjDicWNo4yxDnqUpU7Zv1Cxyc41/NnKfQFtSfieRrWW3hI8XI8tkMIuYVeJmLdtlpY=
+  - DOCKER_LOGIN=wenlock
   - secure: QLLDeI+Syaq0MvSyWQbo/KL39Uq+d/DYtfmzJJFagFkm+CaUrVbLoShsswUWUAeSD9ZaX0wkK6n02FX9vHEozLuSZzTM5OTzyZq9bBQXL0tHGvfVOZK4F+Li8TuLglDoYz5AtVvILZUlkQAYDJ60+wV0VkJoWTxnqJSMupjZkZ0sFu2GrvXdMmNAvWAkCpxXJdQWDZ40TRVW3noYdyLl9SD+DDVYsS0OWT8KHxi+m0MWJehXLuaTa84H2GGALA1GPWkvIg0YKc9AgUyacqCTI9XuqVORaEIZaOqx2+vIrsAEBZK5WjRPMCuIviyEjCVS8p55YToV8dxBCXGn7T8PyXmsh1jTeQK+xaWQxoRAdypRrd4VSupphL/KvIxh8VN9vYT4QMvaWz54OrxHBfV7hiPclPTpEPz9hFUWtkdpsGPUDEVYkRcpl3tsQyJoEhujPRihLUYroHGwa7l7dAiyqwXIANzVtmSX6TvX1ELouYsy0pmi2Mw/xH6tLGIiE8pwp/vj2f/Y5+V43pc2ZjsbfpdFM6D3a9hzqiaWIbpChZe5vnZS+njW8/4Egf5SxdtmGyLXmUKDxpFkyb2aDRMaZUsSAf1CEORcCQ8bzoXUPR7FskDzlF/uM92MKd4rIMX1E2hR22ACg8frvAZi8YnKzfM5YWFrlwvLRRit44zKD68=
 install:
 - "./gradlew clean jar"
@@ -22,6 +22,7 @@ after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 deploy:
   provider: script
-  script: bash -c "docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\";"
+  script: bash -c "echo "${DOCKER_PASSWORD}" | \
+          docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;"
   on:
     all_branches: true
