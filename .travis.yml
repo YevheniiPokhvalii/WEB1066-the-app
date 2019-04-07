@@ -23,12 +23,13 @@ after_success:
 - echo "Build succedded for $BUILD_TARGET"
 before_deploy:
   - ./gradlew -p ./monolithic/ui packageToContainer ;
+  - echo "Build target is -> $BUILD_TARGET"
 deploy:
   provider: script
   script: bash -c "echo \"running for $BUILD_TARGET\" \
                    && docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \
                    && docker tag zutherb/monolithic-shop:latest ${DOCKER_LOGIN}/monolithic-shop:latest \
                    && docker push $DOCKER_LOGIN/monolithic-shop:latest"
-  on:
-    condition: $BUILD_TARGET == ./monolithic/ui
+  # on:
+    # condition: $BUILD_TARGET == ./monolithic/ui
     # branch: master
