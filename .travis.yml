@@ -20,11 +20,13 @@ script:
 - ./gradlew -p $BUILD_TARGET check
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
+- echo "Build succedded for $BUILD_TARGET"
 before_deploy:
   - ./gradlew -p ./monolithic/ui packageToContainer ;
 deploy:
   provider: script
-  script: bash -c "docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \
+  script: bash -c "echo \"running for $BUILD_TARGET\" \
+                   && docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \
                    && docker tag zutherb/monolithic-shop:latest ${DOCKER_LOGIN}/monolithic-shop:latest \
                    && docker push $DOCKER_LOGIN/monolithic-shop:latest"
   on:
