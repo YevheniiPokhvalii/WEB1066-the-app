@@ -26,7 +26,7 @@ before_deploy:
 - echo "Build target is -> $BUILD_TARGET"
 deploy:
   provider: script
-  script: bash -c "docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\";"
+  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;"
   on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
     all_branches: true
