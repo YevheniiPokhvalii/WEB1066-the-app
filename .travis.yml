@@ -28,5 +28,5 @@ deploy:
                    && docker tag zutherb/monolithic-shop:latest ${DOCKER_LOGIN}/monolithic-shop:latest \
                    && docker push $DOCKER_LOGIN/monolithic-shop:latest"
   on:
-    branch: master
     condition: $BUILD_TARGET == ./monolithic/ui
+    # branch: master
