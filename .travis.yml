@@ -13,25 +13,21 @@ env:
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_LOGIN=wenlock
-  - secure: QLLDeI+Syaq0MvSyWQbo/KL39Uq+d/DYtfmzJJFagFkm+CaUrVbLoShsswUWUAeSD9ZaX0wkK6n02FX9vHEozLuSZzTM5OTzyZq9bBQXL0tHGvfVOZK4F+Li8TuLglDoYz5AtVvILZUlkQAYDJ60+wV0VkJoWTxnqJSMupjZkZ0sFu2GrvXdMmNAvWAkCpxXJdQWDZ40TRVW3noYdyLl9SD+DDVYsS0OWT8KHxi+m0MWJehXLuaTa84H2GGALA1GPWkvIg0YKc9AgUyacqCTI9XuqVORaEIZaOqx2+vIrsAEBZK5WjRPMCuIviyEjCVS8p55YToV8dxBCXGn7T8PyXmsh1jTeQK+xaWQxoRAdypRrd4VSupphL/KvIxh8VN9vYT4QMvaWz54OrxHBfV7hiPclPTpEPz9hFUWtkdpsGPUDEVYkRcpl3tsQyJoEhujPRihLUYroHGwa7l7dAiyqwXIANzVtmSX6TvX1ELouYsy0pmi2Mw/xH6tLGIiE8pwp/vj2f/Y5+V43pc2ZjsbfpdFM6D3a9hzqiaWIbpChZe5vnZS+njW8/4Egf5SxdtmGyLXmUKDxpFkyb2aDRMaZUsSAf1CEORcCQ8bzoXUPR7FskDzlF/uM92MKd4rIMX1E2hR22ACg8frvAZi8YnKzfM5YWFrlwvLRRit44zKD68=
+  - secure: SB0pJJmfl4jX1h7c9uvEzGIw2RVRFynb2do27CWOEMvHeCPEINbApiFHuDqrvH/AQkvPrgCEma3auJLBbVHFtQEvoBlBe6hZFjtKvtU8+gYFyQ44hpPWq0wXwlX0Hs7HvBHL8oaFLKl/pufwyFumIjLzYQbtdzivSqwCDodL36LUpS9bRlmfcbIV0OsUvqxnhDNH5nqWspQnRcmdqLaRYtpUu5U+xp6nF6LwxRxCt+jlcMRUc3fCc/C/utgDdG20f65ERFjtRBZ7gJEbTmZyb1zyoXnEyYVfu5AK+NL2v3h7DkeISlafJqLuFA1FVM+r9N/XDZvf693zvAYOBq2YbO0R5nUGM7qOmgiBXXoiDdW+u3lDhPyltjNU5w0Hmq1/V3VXniDonQEhgZR+68iRR7FQ/dtNok2QRhAJRD1pg27Ea8jzZXUo5EvJg+H2zRgTWU2FfQHTPbljWxt0RflEuew7seYSFKniK53EW6B8kZYs97BxzeGQxndCWfqeQFNCmxRVZw0hMaH/UttuQC/HnLt3wW2BBWR97sdUHuIoboAugoZCv9wUK5HhdAzpYKL8chv3hPBKmwtKKP5x2oqFV8LHDn89uVH2jxtIwpMpDG7CYrKdlr/NdNtwQ17LEXpMXnSdiQeDqVJFpe3gDZEIkafLgUbf7IfXnIgwpbba0HQ=
 install:
-- ./gradlew clean jar
+- "./gradlew clean jar"
 script:
-- ./gradlew -p $BUILD_TARGET check
+- "./gradlew -p $BUILD_TARGET check"
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 - echo "Build succedded for $BUILD_TARGET"
 before_deploy:
-  - ./gradlew -p ./monolithic/ui packageToContainer ;
-  - echo "Build target is -> $BUILD_TARGET"
+- "./gradlew -p ./monolithic/ui packageToContainer ;"
+- echo "Build target is -> $BUILD_TARGET"
 deploy:
   provider: script
-  script: bash -c "echo \"running for $BUILD_TARGET\" \
-                   && docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \
-                   && docker tag zutherb/monolithic-shop:latest ${DOCKER_LOGIN}/monolithic-shop:latest \
-                   && docker push $DOCKER_LOGIN/monolithic-shop:latest"
+  script: bash -c "echo \"running for $BUILD_TARGET\" \ && docker login --password
+    \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \ && docker tag zutherb/monolithic-shop:latest
+    ${DOCKER_LOGIN}/monolithic-shop:latest \ && docker push $DOCKER_LOGIN/monolithic-shop:latest"
   on:
     all_branches: true
-  # on:
-    # condition: $BUILD_TARGET == ./monolithic/ui
-    # branch: master
