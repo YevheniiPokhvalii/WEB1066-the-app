@@ -20,11 +20,12 @@ install:
 - "./gradlew clean jar"
 script:
 - "./gradlew -p $BUILD_TARGET check"
+- docker --version
 after_success:
 - find . -name jacocoTestReport.csv|xargs cat|awk -F',' '{print $3" "$4" "$5}'
 deploy:
   provider: script
-  script: bash -c "echo \"${DOCKER_PASSWORD}\" | \
+  script: bash -c "docker --version;echo \"${DOCKER_PASSWORD}\" | \
           docker login --username \"${DOCKER_LOGIN}\" --password-stdin ;"
   on:
     all_branches: true
