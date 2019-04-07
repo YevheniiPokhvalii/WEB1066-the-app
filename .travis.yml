@@ -23,7 +23,7 @@ after_success:
 - echo "Build succedded for $BUILD_TARGET"
 before_deploy:
 - "./gradlew -p ./monolithic/ui packageToContainer ;"
-- echo "Build target is -> $BUILD_TARGET"
+- echo "Build target is --> $BUILD_TARGET"
 deploy:
   provider: script
   script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin && \
