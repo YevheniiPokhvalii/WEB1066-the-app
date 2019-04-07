@@ -13,7 +13,7 @@ env:
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_LOGIN=wenlock
-  - secure: SB0pJJmfl4jX1h7c9uvEzGIw2RVRFynb2do27CWOEMvHeCPEINbApiFHuDqrvH/AQkvPrgCEma3auJLBbVHFtQEvoBlBe6hZFjtKvtU8+gYFyQ44hpPWq0wXwlX0Hs7HvBHL8oaFLKl/pufwyFumIjLzYQbtdzivSqwCDodL36LUpS9bRlmfcbIV0OsUvqxnhDNH5nqWspQnRcmdqLaRYtpUu5U+xp6nF6LwxRxCt+jlcMRUc3fCc/C/utgDdG20f65ERFjtRBZ7gJEbTmZyb1zyoXnEyYVfu5AK+NL2v3h7DkeISlafJqLuFA1FVM+r9N/XDZvf693zvAYOBq2YbO0R5nUGM7qOmgiBXXoiDdW+u3lDhPyltjNU5w0Hmq1/V3VXniDonQEhgZR+68iRR7FQ/dtNok2QRhAJRD1pg27Ea8jzZXUo5EvJg+H2zRgTWU2FfQHTPbljWxt0RflEuew7seYSFKniK53EW6B8kZYs97BxzeGQxndCWfqeQFNCmxRVZw0hMaH/UttuQC/HnLt3wW2BBWR97sdUHuIoboAugoZCv9wUK5HhdAzpYKL8chv3hPBKmwtKKP5x2oqFV8LHDn89uVH2jxtIwpMpDG7CYrKdlr/NdNtwQ17LEXpMXnSdiQeDqVJFpe3gDZEIkafLgUbf7IfXnIgwpbba0HQ=
+  - secure: keg2l1qpjw+JAM7KPsg5Iqo3zjgAtmILtwoXq2i91eg3wSDCbdq3Q6lqBojWmB4QXHfyrHO8lX+v718H+uuqrS3xA3Kpysz/+jJShh1PPjZYe2LosQzEtRlMbwW8Hf/CffJ9IqalCRf6wT3BJArEWnHyg4Xqbcoh6yteKjaeQRlFVSNXL2cM94t52vnGfHFoiHgzOwwSV/4efHZEh2cgB7XXzLD9ifXndU1Gi7u+5OQ6qB0UB/ZXs5eUhuYBowVBNMTCny9z4HSnihcgVaL08ixK60BtBcfYp320kfTSDAIb7cvDMdLI/P7ZFZfGTsVF2HH7Km8JGHqxIZnT6J9AspMsvZICUjRiE/5k2Q+gE87bNKp2Mxk5dis6quK7LDDSTM+uxoMBfOJqfZ4idVi2PMNDfP3sE0XAS21/WoSYP/+k8xIhdAqySmwjZziAt5pPbwhaDHpxpE1oBM8G1DBEfzAnqtMUdG7ukwC+FrNv0tQMYprz0m9aTAHF+ix3oOg2rfvuYLcr65Wg2+yQbB4V8C/pMJB+mmphztLrQU0J0d7xLanX7N3k7T1qQINhWB2tH3OFmPqKZwWOIA5nErLgGGPFVHePFEFsSa6nhh8inQJgdngecrnRCy3/5ty4JDHW8PlCTZN2oqCwHha8nhnfu4QyZXhup/QOlSaFpAq3iPA=
 install:
 - "./gradlew clean jar"
 script:
@@ -26,8 +26,7 @@ before_deploy:
 - echo "Build target is -> $BUILD_TARGET"
 deploy:
   provider: script
-  script: bash -c "echo \"running for $BUILD_TARGET\" \ && docker login --password
-    \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\" \ && docker tag zutherb/monolithic-shop:latest
-    ${DOCKER_LOGIN}/monolithic-shop:latest \ && docker push $DOCKER_LOGIN/monolithic-shop:latest"
+  script: bash -c "docker login --password \"${DOCKER_PASSWORD}\" --username \"${DOCKER_LOGIN}\";"
   on:
+    condition: "$BUILD_TARGET == './monolithic/ui'"
     all_branches: true
