@@ -13,7 +13,7 @@ env:
   - COVERAGE=0.31 BUILD_TARGET=./monolithic/repository/user
   global:
   - DOCKER_LOGIN=wenlock
-  - secure: NRd9DgXdRZNS895dQwwkbME9HtOOSCEi7LiU8hTNJpQeFqTJcbXLCMTyo13sr3xwAdP5/2/FjAbcRuV31iebmjVNfHXx9Xql34Bf2LosAb8gKBz2e98Tme9vdRJtGUZe7zrCNQafExJR+/80CCMjRE54YIB0h0kQjie6f/6/Y/qBblJic680Wa0URX3jhmWuHBit5SksqesJ5zlAtZUjT5AK8WXhg2dEOvUkawXayE9fzMx7stLp2keLuv15Y+EroKGkmlq7C5zqCeABgXUcPX8p91shk9P2TViqTex+c5yfKjSuC52YhS2R/k6P2M32UR5IOHgpoZXOuhQAbGDZTHRe+RYP4HLx9lI6f0O/gNXQRHiKJxWBy4FJMei1LpqCTxKTNMtXiFTtXfu/bYbbyQrtN0NQXEPa6aiiwoaXtyo1OVEAEik/IbSC7fnXG0E5ChBOuz//YPKBzKXVnUQ8Cri3AvYhZ1ZL0GhpmlnLAUYozfrCkaFbPUZq4hJLVrsizYgztdEg3kiI1By+SaYp3PeM0VxQPObDg6xo3q5EvlHcg1Q7qeGRmkqII80kyjEAdJxXpQPi4mx+C3jTVzkR8Sc+VAVejF1jnDxWHMKUaAu8+1jZvuBDisGkxc1UJcrhKrCsavthzBF79D/6DB06erAPTD+rY4OJ1NYnjOqe/LM=
+  - secure: JVXdzY6OMYM9X1q9eeN1ztfPy/ZXgdEgx5ovVjV0UEJGTjKNpdP1tCttYXXC/2IQ7ZL2eNXTG6jHxTU26INgpYCfToakwIyJ/mHDfqNlU9K3yl+Ij0gBZSEidX8lmkpyUy3x5wwDvtK+6e9u7ni/Hrott2Tzt9YdrZuAbYjOVEhJBzBS9SV/mzPasOcTp+qfdKRHpChjJfUZ3SaYNxsuCFa8A6w3Fyrbb8xk92OIHhCgNLzfP84Z1ksRz+tMbZtRDXigxKhUIsX6CuhmTPTiykMNeOilQK2Nzcn8ixJ3CadzhckLsNM550y0fJMbg15Li8rbrmyoV7ufiCniC+/nBPEKNLW9m2XEwtfsAgAZaLSyj620WREvYpjRzr2wj9lvwrD+IQVwZvwQD7syoA4DRkwqA+Bg86huwZ3aVwtVi9RjswGrSLJpKx9tIkae2TzGDT5hPTZgtYPUn8dpXrHTPQdMSs5KCBrnrb5WUhOr86zT4eaHWMdINZTEeCYtVh/PlA4kkMzw+0z8EqGP8LYk4uBf2c9/FfpxiX4RIncLpvYvTDqQIk3W/mym/eygKPKCkqlmIe5JqZFpI7Bi6DZTWjjuu3REK5RzIrrBMSxWGoAEQHGJpdgnpHBesIbiv0zE6vY0qD5GE41cXSa7K4H8IEAYuhkFYOQ1ctnHJqKIjho=
 install:
 - "./gradlew clean jar"
 script:
@@ -27,4 +27,4 @@ deploy:
   script: "./script/deploy.sh"
   on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
-    all_branches: true
+    branch: master
