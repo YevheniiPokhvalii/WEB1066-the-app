@@ -26,10 +26,7 @@ before_deploy:
 - echo "Build target is --> $BUILD_TARGET"
 deploy:
   provider: script
-  script: >-
-    echo "${DOCKER_PASSWORD}" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin
-    && docker tag zutherb/monolithic-shop:latest $DOCKER_LOGIN/monolithic-shop:latest
-    && docker push $DOCKER_LOGIN/monolithic-shop:latest
+  script: ./script/deploy.sh
   on:
     condition: "$BUILD_TARGET == './monolithic/ui'"
     all_branches: true
